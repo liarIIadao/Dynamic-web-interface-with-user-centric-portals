@@ -1,0 +1,10 @@
+#hero {
+    background-image: url("hero2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card img {
+    width: 300px;
+    height: 400px;
+}
