@@ -2,6 +2,9 @@
     background-image: url("hero2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .card img {
