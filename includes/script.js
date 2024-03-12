@@ -1,5 +1,16 @@
 //const myModal = new bootstrap.Modal('#exampleModal');
 
+function url_load () {
+    for (let i = 0; i <infoCollection.length; i++) {
+        let ul = document.getElementById(`userList`);
+        let userInList = ul.appendChild(document.createElement(`li`)).appendChild(document.createElement(`a`));
+        userInList.setAttribute(`class`, `dropdown-item`);
+        let userNameInList = document.createTextNode(infoCollection[i].UserName);
+        userInList.appendChild(userNameInList);
+    }
+}
+
+
 
 document.getElementById(`logout`).addEventListener(`click`, (event) => {
     event.preventDefault();
