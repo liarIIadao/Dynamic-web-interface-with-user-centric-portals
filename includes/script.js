@@ -2,17 +2,28 @@
 
 
 let ul = document.getElementById(`userList`);
+let isAuserRemoved = false;
+const remove_user = (userid) => {
+    infoCollection = infoCollection.filter((listUser) => listUser.UserName !== userid)
+}
 const list_update = ()=> {
+    if (isAuserRemoved) {
+        ul.innerHTML = ``;
+    }
     for (let i = 0; i <infoCollection.length; i++) {
         if(!infoCollection[i].isAdmin){
             let userInList = ul.appendChild(document.createElement(`li`)).appendChild(document.createElement(`a`));
             userInList.setAttribute(`class`, `dropdown-item`);
             let userNameInList = document.createTextNode(infoCollection[i].UserName);
+            userInList.addEventListener(`click`, ()=> {
+                remove_user(infoCollection[i].UserName);
+                isAuserRemoved = true
+            } )
             userInList.appendChild(userNameInList);
         }
     }
+    isAuserRemoved = false;
 }
-
 
 document.getElementById(`delete_user`).addEventListener(`click`, list_update);
 
@@ -59,13 +70,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     finally {
         if (adminLogin){
             for (let i = 0; i <5; i++) {
-                if (i ===0){
-                    let editHeader = document.createComment(`img`);
-                    let editIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-</svg>`;
 
-                }
                 document.getElementById(`PN${i}`).innerHTML = infoCollection[i].PersonalName;
                 document.getElementById(`FN${i}`).innerHTML = infoCollection[i].FamilyName;
                 document.getElementById(`Email${i}`).innerHTML = infoCollection[i].Email;
