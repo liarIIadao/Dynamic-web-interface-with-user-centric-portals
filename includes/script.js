@@ -1,6 +1,6 @@
 //const myModal = new bootstrap.Modal('#exampleModal');
 
-function url_load () {
+let url_load = () => {
     for (let i = 0; i <infoCollection.length; i++) {
         let ul = document.getElementById(`userList`);
         let userInList = ul.appendChild(document.createElement(`li`)).appendChild(document.createElement(`a`));
