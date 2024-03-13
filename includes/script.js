@@ -42,7 +42,7 @@ class User {
 
 let infoCollection =
     [
-        {
+        user1 ={
             PersonalName: `Matthew`,
             FamilyName: `Mingrui Shi`,
             Email: `adaojun99@gmail.com`,
@@ -50,7 +50,7 @@ let infoCollection =
             Role: true, // true if user is admin
             VisualId: `null`
         },
-        {
+        user1 ={
             PersonalName: `admin`,
             FamilyName: `admin`,
             Email: `admin@admin.ca`,
@@ -58,7 +58,7 @@ let infoCollection =
             Role: true,
             VisualId: `null`
         },
-        {
+        user2 ={
             PersonalName: `Joe`,
             FamilyName: `joe`,
             Email: `2@2.ca`,
@@ -66,7 +66,7 @@ let infoCollection =
             Role: true,
             VisualId: `null`
         },
-        {
+        user3 ={
             PersonalName: `IronMam`,
             FamilyName: `Tony Stark`,
             Email: `4@4.ca`,
@@ -74,14 +74,15 @@ let infoCollection =
             Role: false,
             VisualId: `null`
         },
-        {
+        user4 ={
             PersonalName: `Elon`,
             FamilyName: `Musk`,
             Email: `5@5.ca`,
-            UserName: `User5`,
+            UserName: `User4`,
             Role: false,
             VisualId: `null`
         }
     ];
 
-let newList = infoCollection.filter((word) => word.UserName
+let newList = infoCollection.filter((user) => user.UserName === `User4`).map((user)=> user.PersonalName)
+document.getElementById(`test1`).innerHTML = newList.join(`,`);
