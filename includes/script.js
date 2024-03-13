@@ -1,15 +1,20 @@
 //const myModal = new bootstrap.Modal('#exampleModal');
 
-function url_load () {
+
+let ul = document.getElementById(`userList`);
+const list_update = ()=> {
     for (let i = 0; i <infoCollection.length; i++) {
-        let ul = document.getElementById(`userList`);
-        let userInList = ul.appendChild(document.createElement(`li`)).appendChild(document.createElement(`a`));
-        userInList.setAttribute(`class`, `dropdown-item`);
-        let userNameInList = document.createTextNode(infoCollection[i].UserName);
-        userInList.appendChild(userNameInList);
+        if(!infoCollection[i].isAdmin){
+            let userInList = ul.appendChild(document.createElement(`li`)).appendChild(document.createElement(`a`));
+            userInList.setAttribute(`class`, `dropdown-item`);
+            let userNameInList = document.createTextNode(infoCollection[i].UserName);
+            userInList.appendChild(userNameInList);
+        }
     }
 }
 
+
+document.getElementById(`delete_user`).addEventListener(`click`, list_update);
 
 
 document.getElementById(`logout`).addEventListener(`click`, (event) => {
