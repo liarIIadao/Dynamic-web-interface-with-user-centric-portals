@@ -29,8 +29,8 @@
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" id="login" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-            <button type="button" id="logout" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+            <button type="button" id="login" class="btn btn-primary btn-lg px-4 gap-3 position-absolute top-85 start-50 translate-middle">Sign in</button>
+            <button type="button" id="logout" class="btn btn-outline-secondary btn-lg px-4 position-absolute top-85 start-50 translate-middle" style="visibility: hidden">Sign out</button>
         </div>
     </div>
 </div>
@@ -42,12 +42,12 @@
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Admin portal</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                As an admin click on the button below to delete a user. <b>WARNING! The action is irreversible and will take effect as soon as a user is clicked</b>
             </div>
             <div class="dropdown mt-3">
                 <button id="delete_user" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -76,7 +76,8 @@
 
 </div>
 
-<div class="container visually-hidden" id="infoCards">
+<div class="container " id="infoCards" style="display: none">
+    <h1 id="log"></h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
         <div class="col">
             <div class="card h-100">
@@ -127,9 +128,9 @@
         </div>
         <div class="col">
             <div class="card h-100">
-                <img src="includes/profilepics/user4.webp" class="card-img-top" alt="...">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title" id="PN4"></h5>
+                    <span>Personal name: </span><h5 class="card-title" id="PN4"></h5>
                     <p class="card-text" id="FN4"></p>
                     <p class="card-text" id="Email4"></p>
                     <p class="card-text" id="User4"></p>

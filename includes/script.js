@@ -1,7 +1,8 @@
 //const myModal = new bootstrap.Modal('#exampleModal');
 
-
+let infoCards = document.getElementById(`infoCards`);
 let ul = document.getElementById(`userList`);
+
 let isAuserRemoved = false;
 const remove_user = (userid) => {
     infoCollection = infoCollection.filter((listUser) => listUser.UserName !== userid)
@@ -30,7 +31,10 @@ document.getElementById(`delete_user`).addEventListener(`click`, list_update);
 
 document.getElementById(`logout`).addEventListener(`click`, (event) => {
     event.preventDefault();
-
+    document.getElementById(`myForm`).reset();
+    document.getElementById(`login`).style.display = `flex`;
+    document.getElementById(`logout`).style.display = `none`;
+    infoCards.style.visibility = `hidden`;
 })
 
 // validate userInput
@@ -41,13 +45,17 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     let userIndex = -1;
     let inputUser = document.getElementById(`input0`).value.toUpperCase();
     let inputEmail = document.getElementById(`input1`).value;
-    let infoCards = document.getElementById(`infoCards`);
+
     try {
         for (let i = 0; i < 15; i++) {
             if ((inputUser === infoCollection[i].UserName) && (inputEmail === infoCollection[i].Email) && (i < 3)) {
                 adminLogin = true;
                 userLogin = false;
                 document.getElementById(`error1`).innerHTML = ``;
+                //let currentTime = new Date.now();
+                //document.getElementById(`log`).textContent = `Login timestamp: ${currentTime.toString()}`
+                document.getElementById(`logout`).style.display = `flex`;
+                document.getElementById(`login`).style.display = `none`;
                 console.log(`verified`)
             }
             else if ((inputUser === infoCollection[i].UserName) && (inputEmail === infoCollection[i].Email) && (i <= 15)){
@@ -55,6 +63,8 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 adminLogin = false;
                 userIndex = i;
                 document.getElementById(`error1`).innerHTML = ``;
+                document.getElementById(`logout`).style.display = `flex`;
+                document.getElementById(`login`).style.display = `none`;
                 console.log(`userverified`)
             }
         }
@@ -69,14 +79,8 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     }
     finally {
         if (adminLogin){
-            for (let i = 0; i <5; i++) {
-
-                document.getElementById(`PN${i}`).innerHTML = infoCollection[i].PersonalName;
-                document.getElementById(`FN${i}`).innerHTML = infoCollection[i].FamilyName;
-                document.getElementById(`Email${i}`).innerHTML = infoCollection[i].Email;
-                document.getElementById(`User${i}`).innerHTML = infoCollection[i].UserName;
-            }
-            infoCards.classList.remove(`visually-hidden`);
+            populateCards();
+            infoCards.style.display = `none`;
         }
         else if (userLogin){
             document.getElementById(`PN0`).innerHTML = infoCollection[userIndex].PersonalName;
@@ -91,14 +95,28 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 document.getElementById(`User${i}`).innerHTML = infoCollection[i-1].UserName;
 
             }
-            infoCards.classList.remove(`visually-hidden`);
+            infoCards.style.display = `block`;
         }
         else {
-            infoCards.className=`container visually-hidden`;
+            infoCards.style.display = `none`;
         }
 
     }
 })
+
+// times stamp of login
+
+
+
+// Build cards for admins
+const populateCards = () => {
+    for (let i = 0; i < 5; i++) {
+        document.getElementById(`PN${i}`).innerHTML = infoCollection[i].PersonalName;
+        document.getElementById(`FN${i}`).innerHTML = infoCollection[i].FamilyName;
+        document.getElementById(`Email${i}`).innerHTML = infoCollection[i].Email;
+        document.getElementById(`User${i}`).innerHTML = infoCollection[i].UserName;
+    }
+}
 
 class User {
     constructor(personalName, familyName, email, role, userId, visualId){
@@ -124,9 +142,9 @@ let infoCollection =
         new User(`Saul`, `Goodman`, `8@8.ca`, false, `USER8`,`nulk`),
         new User(`Joe`, `Negan`, `9@9.ca`, false, `USER9`,`null`),
         new User(`Joe`, `Negan`, `10@10.ca`, false, `USER10`,`null`),
-         new User(`Joe`, `Negan`, `11@11.ca`, false, `USER11`,`null`),
-         new User(`Joe`, `Negan`, `12@12.ca`, false, `USER12`,`null`),
-         new User(`Joe`, `Negan`, `13@13.ca`, false, `USER13`,`nul`),
+        new User(`Joe`, `Negan`, `11@11.ca`, false, `USER11`,`null`),
+        new User(`Joe`, `Negan`, `12@12.ca`, false, `USER12`,`null`),
+        new User(`Joe`, `Negan`, `13@13.ca`, false, `USER13`,`nul`),
         new User(`Joe`, `Negan`, `14@14.ca`, false, `USER14`,`nulk`),
         new User(`Joe`, `Negan`, `15@15.ca`, false, `USER15`,`nulk`)
     ];
