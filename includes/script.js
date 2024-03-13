@@ -34,7 +34,7 @@ document.getElementById(`logout`).addEventListener(`click`, (event) => {
     document.getElementById(`myForm`).reset();
     document.getElementById(`login`).style.display = `flex`;
     document.getElementById(`logout`).style.display = `none`;
-    infoCards.style.visibility = `hidden`;
+    infoCards.style.display = `none`;
 })
 
 // validate userInput
@@ -80,7 +80,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     finally {
         if (adminLogin){
             populateCards();
-            infoCards.style.display = `none`;
+            infoCards.style.display = `block`;
         }
         else if (userLogin){
             document.getElementById(`PN0`).innerHTML = infoCollection[userIndex].PersonalName;
