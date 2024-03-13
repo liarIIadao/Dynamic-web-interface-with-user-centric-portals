@@ -30,7 +30,7 @@
         <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button type="button" id="login" class="btn btn-primary btn-lg px-4 gap-3 position-absolute top-85 start-50 translate-middle">Sign in</button>
-            <button type="button" id="logout" class="btn btn-outline-secondary btn-lg px-4 position-absolute top-85 start-50 translate-middle" style="visibility: hidden">Sign out</button>
+            <button type="button" id="logout" class="btn btn-outline-secondary btn-lg px-4 position-absolute top-85 start-50 translate-middle" style="display: none">Sign out</button>
         </div>
     </div>
 </div>
@@ -79,34 +79,31 @@
 <div class="container " id="infoCards" style="display: none">
     <h1 id="log"></h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
-        <div class="col">
+        <div class="col-sm-4" id="card0">
             <div class="card h-100">
-                <div class="card-header">
-
-                </div>
-                <img src="" class="card-img-top img-thumbnail" alt="...">
+                <img src="1" class="card-img-top img-thumbnail" id="VI0" alt="...">
                 <div class="card-body">
                     <span>Personal name:<h5 class="card-title" id="PN0">Card title</h5></span>
-                    <p class="card-text" id="FN0">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text" id="Email0"></p>
-                    <p class="card-text" id="User0"></p>
+                    <span>Family name: </span><p class="card-text" id="FN0">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <span>Email: </span><p class="card-text" id="Email0"></p>
+                    <span>Username: </span><p class="card-text" id="User0"></p>
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-4" id="card1">
             <div class="card h-100">
-                <img src="" class="card-img-top img-thumbnail" alt="...">
+                <img src="1" class="card-img-top img-thumbnail" id="VI1" alt="...">
                 <div class="card-body">
                     <span>Personal name: </span><h5 class="card-title" id="PN1"></h5>
                     <span>Family name: </span><p class="card-text" id="FN1"></p>
-                    <span>Email: </s pan><p class="card-text" id="Email1"></p>
-                    <span>Username: </span> <p class="card-text" id="User1"></p>
+                    <span>Email: </span><p class="card-text" id="Email1"></p>
+                    <span>Username: </span><p class="card-text" id="User1"></p>
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-4" id="card2">
             <div class="card h-100">
-                <img src="" class="card-img-top" alt="...">
+                <img src="1" class="card-img-top" id="VI2" alt="...">
                 <div class="card-body">
                     <span>Personal name: </span><h5 class="card-title" id="PN2"></h5>
                     <span>Family name: </span><p class="card-text" id="FN2"></p>
@@ -115,9 +112,9 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-4" id="card3">
             <div class="card h-100">
-                <img src="" class="card-img-top" alt="...">
+                <img src="1" class="card-img-top" id="VI3" alt="...">
                 <div class="card-body">
                     <span>Personal name: </span><h5 class="card-title" id="PN3"></h5>
                     <span>Family name: </span><p class="card-text" id="FN3"></p>
@@ -126,9 +123,9 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-sm-4" id="card4">
             <div class="card h-100">
-                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" alt="...">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI4" alt="...">
                 <div class="card-body">
                     <span>Personal name: </span><h5 class="card-title" id="PN4"></h5>
                     <span>Family name: </span><p class="card-text" id="FN4"></p>
