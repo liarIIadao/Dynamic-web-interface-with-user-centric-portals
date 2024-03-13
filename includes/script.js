@@ -1,4 +1,4 @@
-//const myModal = new bootstrap.Modal('#exampleModal');
+const myModal = new bootstrap.Modal('#exampleModal');
 
 let infoCards = document.getElementById(`infoCards`);
 let ul = document.getElementById(`userList`);
@@ -9,10 +9,15 @@ let isAuserRemoved = false;
 //NEED to update src of img tag if a user is removed
 const remove_user = (userid) => {
     infoCollection = infoCollection.filter((listUser) => listUser.UserName !== userid)
-
-
-    //document.getElementById()
+    for (let i = 0; i < infoCollection.length; i++) {
+        document.getElementById(`card${i}`).style.display = `block`;
+    }
+    for (let i = infoCollection.length; i < 15; i++) {
+        document.getElementById(`card${i}`).style.display = `none`;
+    }
 }
+
+
 const list_update = ()=> {
     ul.innerHTML = ``;
     for (let i = 0; i <infoCollection.length; i++) {
@@ -22,7 +27,7 @@ const list_update = ()=> {
             let userNameInList = document.createTextNode(infoCollection[i].UserName);
             userInList.addEventListener(`click`, ()=> {
                 remove_user(infoCollection[i].UserName);
-                //updateCards();
+                populateCards();
                 isAuserRemoved = true
             } )
             userInList.appendChild(userNameInList);
@@ -34,7 +39,7 @@ const list_update = ()=> {
 document.getElementById(`delete_user`).addEventListener(`click`, list_update);
 
 // hide element if there's no info
-const hideUnusedCards = () => {for (let i = 0; i < 5; i++) {
+const hideUnusedCards = () => {for (let i = 0; i < 15; i++) {
     let card = document.getElementById(`card${i}`).firstElementChild.firstElementChild;
     if (card.getAttribute(`src`)=== ``){
         document.getElementById(`card${i}`).style.display = `none`;
@@ -49,7 +54,8 @@ const updateCards= () => {
 }
 // Build cards for admins
 const populateCards = () => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < infoCollection.length; i++) {
+        document.getElementById(`VI${i}`).setAttribute(`src`, infoCollection[i].VisualId)
         document.getElementById(`PN${i}`).innerHTML = infoCollection[i].PersonalName;
         document.getElementById(`FN${i}`).innerHTML = infoCollection[i].FamilyName;
         document.getElementById(`Email${i}`).innerHTML = infoCollection[i].Email;
@@ -62,8 +68,9 @@ const populateCards = () => {
 document.getElementById(`logout`).addEventListener(`click`, (event) => {
     event.preventDefault();
     document.getElementById(`myForm`).reset();
-    document.getElementById(`login`).style.display = `flex`;
+    document.getElementById(`openModal`).style.display = `flex`;
     document.getElementById(`logout`).style.display = `none`;
+    document.getElementById(`editBtn`).style.display= `none`;
     infoCards.style.display = `none`;
 })
 
@@ -85,7 +92,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 //let currentTime = new Date.now();
                 //document.getElementById(`log`).textContent = `Login timestamp: ${currentTime.toString()}`
                 document.getElementById(`logout`).style.display = `flex`;
-                document.getElementById(`login`).style.display = `none`;
+                document.getElementById(`openModal`).style.display = `none`;
                 console.log(`verified`)
             }
             else if ((inputUser === infoCollection[i].UserName) && (inputEmail === infoCollection[i].Email) && (i <= 15)){
@@ -94,7 +101,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 userIndex = i;
                 document.getElementById(`error1`).innerHTML = ``;
                 document.getElementById(`logout`).style.display = `flex`;
-                document.getElementById(`login`).style.display = `none`;
+                document.getElementById(`openModal`).style.display = `none`;
                 console.log(`userverified`)
             }
         }
@@ -111,6 +118,8 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
         if (adminLogin){
             populateCards();
             infoCards.style.display = `block`;
+            document.getElementById(`editBtn`).style.display= `flex`;
+            myModal.hide();
         }
         else if (userLogin){
             document.getElementById(`PN0`).innerHTML = infoCollection[userIndex].PersonalName;
@@ -125,6 +134,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 document.getElementById(`User${i}`).innerHTML = infoCollection[i-1].UserName;
             }
             infoCards.style.display = `block`;
+            myModal.hide();
         }
         else {
             infoCards.style.display = `none`;
@@ -134,10 +144,6 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
 })
 
 // times stamp of login
-
-
-
-
 
 class User {
     constructor(personalName, familyName, email, role, userId, visualId){
@@ -157,7 +163,7 @@ let infoCollection =
         new User(`admin`, `admin`, `admin`, true,`USER2`, `null`),
         new User(`Joe`, `Negan`, `3@3.ca`, true, `USER3`,`nulk`),
         new User(`Elon`, `Musk`, `4@4.ca`, false, `USER4`,`nulk`),
-        new User(`Tony`, `Stark`, `5@5.ca`,  false, `USER5`,`nulk`),
+        new User(`Tony`, `Stark`, `5@5.ca`,  false, `USER5`,`profilepics/user4.webp`),
         new User(`Barack`, `Obama`, `6@6.ca`, false, `USER6`,`nulk`),
         new User(`Margot`, `Robbie`, `7@7.ca`, false, `USER7`,`nul`),
         new User(`Saul`, `Goodman`, `8@8.ca`, false, `USER8`,`nulk`),

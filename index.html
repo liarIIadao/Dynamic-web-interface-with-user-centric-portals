@@ -29,14 +29,16 @@
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" id="login" class="btn btn-primary btn-lg px-4 gap-3 position-absolute top-85 start-50 translate-middle">Sign in</button>
+            <button type="button" id="openModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Log in
+            </button>
             <button type="button" id="logout" class="btn btn-outline-secondary btn-lg px-4 position-absolute top-85 start-50 translate-middle" style="display: none">Sign out</button>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button class="fixed-bottom btn btn-lg btn-primary text-center" id="editBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="display: none">
         Admin editing user profiles
     </button>
 
@@ -61,20 +63,37 @@
     </div>
 </div>
 
-<div class="container bg-secondary">
-    <form id="myForm">
-        <div class="input-group mb-3">
-            <span class="input-group-text" ><i class="bi bi-file-person"></i></span>
-            <input type="text" class="form-control" id="input0" placeholder="UserName" >
-        </div>
-        <div id="error1" class="error"></div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" ><i class="bi bi-file-person"></i></span>
-            <input type="text" class="form-control" id="input1" placeholder="Email">
-        </div>
-    </form>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid bg-secondary">
+                    <form id="myForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" ><i class="bi bi-file-person"></i></span>
+                            <input type="text" class="form-control" id="input0" placeholder="UserName" >
+                        </div>
+                        <div id="error1" class="error"></div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" ><i class="bi bi-file-person"></i></span>
+                            <input type="text" class="form-control" id="input1" placeholder="Email">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="login" class="btn btn-primary">Sign in</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div class="container " id="infoCards" style="display: none">
     <h1 id="log"></h1>
@@ -125,12 +144,122 @@
         </div>
         <div class="col-sm-4" id="card4">
             <div class="card h-100">
-                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI4" alt="...">
+                <img src="" class="card-img-top mx-auto" id="VI4" alt="...">
                 <div class="card-body">
                     <span>Personal name: </span><h5 class="card-title" id="PN4"></h5>
                     <span>Family name: </span><p class="card-text" id="FN4"></p>
                     <span>Email: </span><p class="card-text" id="Email4"></p>
                    <span>Username: </span> <p class="card-text" id="User4"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card5">
+            <div class="card h-100">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI5" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN5"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN5"></p>
+                    <span>Email: </span><p class="card-text" id="Email5"></p>
+                    <span>Username: </span> <p class="card-text" id="User5"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card6">
+            <div class="card h-100">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI6" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN6"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN6"></p>
+                    <span>Email: </span><p class="card-text" id="Email6"></p>
+                    <span>Username: </span> <p class="card-text" id="User6"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card7">
+            <div class="card h-100">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI7" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN7"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN7"></p>
+                    <span>Email: </span><p class="card-text" id="Email7"></p>
+                    <span>Username: </span> <p class="card-text" id="User7"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card8">
+            <div class="card h-100">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI8" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN8"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN8"></p>
+                    <span>Email: </span><p class="card-text" id="Email8"></p>
+                    <span>Username: </span> <p class="card-text" id="User8"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card9">
+            <div class="card h-100">
+                <img src="includes/profilepics/user4.webp" class="card-img-top mx-auto" id="VI9" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN9"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN9"></p>
+                    <span>Email: </span><p class="card-text" id="Email9"></p>
+                    <span>Username: </span> <p class="card-text" id="User9"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card10">
+            <div class="card h-100">
+                <img src="" class="card-img-top mx-auto" id="VI10" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN10"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN10"></p>
+                    <span>Email: </span><p class="card-text" id="Email10"></p>
+                    <span>Username: </span> <p class="card-text" id="User10"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card11">
+            <div class="card h-100">
+                <img src="" class="card-img-top mx-auto" id="VI11" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN11"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN11"></p>
+                    <span>Email: </span><p class="card-text" id="Email11"></p>
+                    <span>Username: </span> <p class="card-text" id="User11"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card12">
+            <div class="card h-100">
+                <img src="" class="card-img-top mx-auto" id="VI12" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN12"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN12"></p>
+                    <span>Email: </span><p class="card-text" id="Email12"></p>
+                    <span>Username: </span> <p class="card-text" id="User12"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card13">
+            <div class="card h-100">
+                <img src="" class="card-img-top mx-auto" id="VI13" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN13"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN13"></p>
+                    <span>Email: </span><p class="card-text" id="Email13"></p>
+                    <span>Username: </span> <p class="card-text" id="User13"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" id="card14">
+            <div class="card h-100">
+                <img src="" class="card-img-top mx-auto" id="VI14" alt="...">
+                <div class="card-body">
+                    <span>Personal name: </span><h5 class="card-title" id="PN14"></h5>
+                    <span>Family name: </span><p class="card-text" id="FN14"></p>
+                    <span>Email: </span><p class="card-text" id="Email14"></p>
+                    <span>Username: </span> <p class="card-text" id="User14"></p>
                 </div>
             </div>
         </div>
