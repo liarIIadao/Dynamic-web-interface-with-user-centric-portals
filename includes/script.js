@@ -6,7 +6,6 @@ let ul = document.getElementById(`userList`);
 let isAuserRemoved = false;
 
 
-//NEED to update src of img tag if a user is removed
 const remove_user = (userid) => {
     infoCollection = infoCollection.filter((listUser) => listUser.UserName !== userid)
     for (let i = 0; i < infoCollection.length; i++) {
@@ -39,12 +38,14 @@ const list_update = ()=> {
 document.getElementById(`delete_user`).addEventListener(`click`, list_update);
 
 // hide element if there's no info
-const hideUnusedCards = () => {for (let i = 0; i < 15; i++) {
-    let card = document.getElementById(`card${i}`).firstElementChild.firstElementChild;
-    if (card.getAttribute(`src`)=== ``){
+const hideUnusedCards = (numVisibleCards) => {
+    for (let i = 0; i < numVisibleCards; i++) {
+        document.getElementById(`card${i}`).style.display = `block`;
+    }
+    for (let i = numVisibleCards; i < 15; i++) {
         document.getElementById(`card${i}`).style.display = `none`;
     }
-}}
+}
 
 
 const updateCards= () => {
@@ -102,6 +103,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
                 document.getElementById(`error1`).innerHTML = ``;
                 document.getElementById(`logout`).style.display = `flex`;
                 document.getElementById(`openModal`).style.display = `none`;
+                hideUnusedCards(4)
                 console.log(`userverified`)
             }
         }
