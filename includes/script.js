@@ -84,7 +84,12 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     let inputUser = document.getElementById(`input0`).value.toUpperCase();
     let inputEmail = document.getElementById(`input1`).value;
 
+
     try {
+        if(!infoCollection.map(user=> user.UserName).includes(inputUser)){
+            console.log(`usernotfound`);
+            throw new Error(`User is not found`);
+        }
         for (let i = 0; i < 15; i++) {
             if ((inputUser === infoCollection[i].UserName) && (inputEmail === infoCollection[i].Email) && (i < 3)) {
                 adminLogin = true;
@@ -114,7 +119,6 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
     } catch(e) {
             console.log(`error!`)
             document.getElementById(`error1`).innerHTML = (e);
-
     }
     finally {
         if (adminLogin){
@@ -122,14 +126,17 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
             infoCards.style.display = `block`;
             document.getElementById(`editBtn`).style.display= `flex`;
             myModal.hide();
+            document.getElementById(`error1`).innerHTML = ``
         }
         else if (userLogin){
+            document.getElementById(`VI0`).setAttribute(`src`, infoCollection[userIndex].VisualId)
             document.getElementById(`PN0`).innerHTML = infoCollection[userIndex].PersonalName;
             document.getElementById(`FN0`).innerHTML = infoCollection[userIndex].FamilyName;
             document.getElementById(`Email0`).innerHTML = infoCollection[userIndex].Email;
             document.getElementById(`User0`).innerHTML = infoCollection[userIndex].UserName;
 
             for (let i = 1; i < 4; i++) {
+                document.getElementById(`VI${i}`).setAttribute(`src`, infoCollection[i-1].VisualId)
                 document.getElementById(`PN${i}`).innerHTML = infoCollection[i-1].PersonalName;
                 document.getElementById(`FN${i}`).innerHTML = infoCollection[i-1].FamilyName;
                 document.getElementById(`Email${i}`).innerHTML = infoCollection[i-1].Email;
@@ -137,6 +144,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
             }
             infoCards.style.display = `block`;
             myModal.hide();
+            document.getElementById(`error1`).innerHTML = ``
         }
         else {
             infoCards.style.display = `none`;
@@ -161,21 +169,21 @@ class User {
 
 let infoCollection =
     [
-        new User(`Matthew`, `Shi`, `adaojun99@gmail.ca`, true,`USER1`, `null`),
-        new User(`admin`, `admin`, `admin`, true,`USER2`, `null`),
-        new User(`Joe`, `Negan`, `3@3.ca`, true, `USER3`,`nulk`),
-        new User(`Elon`, `Musk`, `4@4.ca`, false, `USER4`,`nulk`),
-        new User(`Tony`, `Stark`, `5@5.ca`,  false, `USER5`,`profilepics/user4.webp`),
-        new User(`Barack`, `Obama`, `6@6.ca`, false, `USER6`,`nulk`),
-        new User(`Margot`, `Robbie`, `7@7.ca`, false, `USER7`,`nul`),
-        new User(`Saul`, `Goodman`, `8@8.ca`, false, `USER8`,`nulk`),
-        new User(`Kim`, `Wexler`, `9@9.ca`, false, `USER9`,`null`),
-        new User(`Rick`, `Grimes`, `10@10.ca`, false, `USER10`,`null`),
-        new User(`Morty`, `Grimes`, `11@11.ca`, false, `USER11`,`null`),
-        new User(`Evil`, `Morty`, `12@12.ca`, false, `USER12`,`null`),
-        new User(`Summer`, `Grimes`, `13@13.ca`, false, `USER13`,`nul`),
-        new User(`Rust`, `Cohle`, `14@14.ca`, false, `USER14`,`nulk`),
-        new User(`Marty`, `Hart`, `15@15.ca`, false, `USER15`,`nulk`)
+        new User(`Matthew`, `Shi`, `adaojun99@gmail.ca`, true,`USER1`, `includes/profilepics/user1.jpg`),
+        new User(`admin`, `admin`, `admin`, true,`USER2`, `includes/profilepics/user2.png`),
+        new User(`Joe`, `Joe`, `3@3.ca`, true, `USER3`,`includes/profilepics/user3.png`),
+        new User(`Elon`, `Musk`, `4@4.ca`, false, `USER4`,`includes/profilepics/user4.webp`),
+        new User(`Tony`, `Stark`, `5@5.ca`,  false, `USER5`,`includes/profilepics/user5.webp`),
+        new User(`Barack`, `Obama`, `6@6.ca`, false, `USER6`,`includes/profilepics/user6.jpg`),
+        new User(`Margot`, `Robbie`, `7@7.ca`, false, `USER7`,`includes/profilepics/user7.webp`),
+        new User(`Saul`, `Goodman`, `8@8.ca`, false, `USER8`,`includes/profilepics/user8.webp`),
+        new User(`Kim`, `Wexler`, `9@9.ca`, false, `USER9`,`includes/profilepics/user9.webp`),
+        new User(`Rick`, `Pickle`, `10@10.ca`, false, `USER10`,`includes/profilepics/user10.webp`),
+        new User(`Morty`, `Smith`, `11@11.ca`, false, `USER11`,`includes/profilepics/user11.webp`),
+        new User(`Evil`, `Morty`, `12@12.ca`, false, `USER12`,`includes/profilepics/user12.webp`),
+        new User(`Summer`, `Smith`, `13@13.ca`, false, `USER13`,`includes/profilepics/user13.webp`),
+        new User(`Rust`, `Cohle`, `14@14.ca`, false, `USER14`,`includes/profilepics/user14.webp`),
+        new User(`Marty`, `Hart`, `15@15.ca`, false, `USER15`,`includes/profilepics/user15.webp`)
     ];
 
 
