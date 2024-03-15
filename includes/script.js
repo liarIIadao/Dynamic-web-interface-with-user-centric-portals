@@ -64,7 +64,7 @@ document.getElementById(`delete_user`).addEventListener(`click`, (event)=> {
     }
 });
 
-// hide element if there's no info
+// hide cards if there's no info
 const hideUnusedCards = (numVisibleCards) => {
     for (let i = 0; i < numVisibleCards; i++) {
         document.getElementById(`card${i}`).style.display = `block`;
@@ -88,6 +88,8 @@ const populateCards = () => {
         document.getElementById(`card${i}`).style.display = `block`;
         if (infoCollection[i].isAdmin) {
             document.getElementById(`card${i}`).firstElementChild.style.color = `red`;
+        }else {
+            document.getElementById(`card${i}`).firstElementChild.style.color = `black`;
         }
     }
 }
@@ -167,6 +169,7 @@ document.getElementById(`login`).addEventListener(`click`, (event) => {
             document.getElementById(`FN0`).innerHTML = infoCollection[userIndex].FamilyName;
             document.getElementById(`Email0`).innerHTML = infoCollection[userIndex].Email;
             document.getElementById(`User0`).innerHTML = infoCollection[userIndex].UserName;
+            document.getElementById(`card0`).firstElementChild.style.color = `black`;
             for (let i = 1; i < 4; i++) {
                 document.getElementById(`VI${i}`).setAttribute(`src`, infoCollection[i-1].VisualId)
                 document.getElementById(`PN${i}`).innerHTML = infoCollection[i-1].PersonalName;
