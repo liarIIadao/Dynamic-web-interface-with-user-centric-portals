@@ -39,13 +39,6 @@ Fail to log in will keep previous info and error after reopening modal
 
 # Sign out:
 
-Click on sign out button to sign out (amazing)
+Click on sign out button to sign out 
 
 Cards and unused button will disappear
-
-# What I learn
-1. bootstrap is powerful, some components in bootstrap such as popover need other library to work
-2. Form by default wont reset its content unless a reset() is operated on it
-3. Jquery is less write do more, and its more convenient to manipulate DOM elements than vanila javascript
-4. JS class getter and setter are different from java
-5. In js array map() can be used to specific piecies of info from original one, filter() return a subset of array based on callbackfn
