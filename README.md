@@ -1,4 +1,4 @@
-# A dynamic, interactive web interface via vanila JS, bootstrap
+# A dynamic, interactive web interface via vanila JS, bootstrap for learning purpose
 
 ## It provides different functionality for two roles: Users and Admins. By default there are 3 admins and 12 users
 
